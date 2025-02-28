@@ -1,5 +1,3 @@
-import PropertyList from '@/app/components/properties/PropertyList';
-import Image from 'next/image';
 import Conversation from '../components/inbox/Conversation';
 const InboxPage = () => {
     return (
