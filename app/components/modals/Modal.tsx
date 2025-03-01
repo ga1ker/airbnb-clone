@@ -14,7 +14,7 @@ const Modal: React.FC<ModalProps> = ({
     content,
     isOpen,
     close
-}) => {
+}) => { 
     const [showModal, setShowModal] = useState(isOpen);
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const Modal: React.FC<ModalProps> = ({
                 <div className={`translate duration-600 h-full ${showModal ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-10'} ${showModal ? 'translate-y-0' : 'translate-y-full'} `}>
                     <div className="w-full h-auto rounded-xl relative flex flex-col bg-white">
                         <header className="h-[60px] flex items-center p-6 rounded-t justify-center relative border-b">
-                            <div className="p-3 absolute left-3 hover:bg-gray-300 rounded-full cursor-pointer">
+                            <div onClick={handleClose} className="p-3 absolute left-3 hover:bg-gray-300 rounded-full cursor-pointer">
                                 <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
