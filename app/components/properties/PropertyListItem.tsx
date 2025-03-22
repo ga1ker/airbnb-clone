@@ -9,7 +9,7 @@ interface PropertyProps {
 const PropertyListItem: React.FC<PropertyProps> = ({
     property
 }) => {
-    const router=useRouter()
+    const router = useRouter()
     return (
         <div className="cursor-pointer" onClick={() => router.push(`properties/${property.id}`)}>
             <div className="relative overflow-hidden aspect-square rounded-xl">
