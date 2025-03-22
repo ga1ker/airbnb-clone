@@ -39,16 +39,20 @@ const UserNav: React.FC<UserNavProps> = ({
                         userId ? (
                             <>
                             <MenuLink 
+                                label="Inbox"
+                                onClick={()=> router.push(`/inbox/`)}
+                            />
+                            <MenuLink
                                 label="My properties"
-                                onClick={()=> router.push(`myproperties/`)}
+                                onClick={()=> router.push(`/myproperties/`)}
                             />
                             <MenuLink 
                                 label="My reservations"
-                                onClick={()=> router.push(`myreservations/`)}
+                                onClick={()=> router.push(`/myreservations/`)}
                             />
                             <MenuLink 
                                 label="My favorites"
-                                onClick={()=> router.push(`myfavorites/`)}
+                                onClick={()=> router.push(`/myfavorites/`)}
                             />
                             <LogoutButton />
                             </>
