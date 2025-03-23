@@ -2,7 +2,7 @@ import PropertyList from "../components/properties/PropertyList";
 import { getUserId } from "../lib/actions"
 
 const MyFavoritesPage = async () => {
-    const userId = getUserId();
+    const userId = await getUserId();
 
     if (!userId) {
         return (
