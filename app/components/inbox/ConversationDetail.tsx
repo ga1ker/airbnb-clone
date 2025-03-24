@@ -10,14 +10,16 @@ interface ConversationDetailProps {
     token: string;
     userId: string;
     conversation: ConversationType;
+    messages: MessageType[];
 }
 
 const ConversationDetail: React.FC<ConversationDetailProps> = ({
     userId,
     token,
     conversation,
+    messages,
 }) => {
-    const messageDiv = useRef(null)
+    const messageDiv = useRef<HTMLDivElement>(null)
     const [newMessage, setNewMessage] = useState('')
     const myUser = conversation.users?.find((user) => user.id == userId)
     const otherUser = conversation.users?.find((user) => user.id != userId)
@@ -51,6 +53,9 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
     }, [lastJsonMessage])
 
     const sendMessage = async () => {
+
+        console.log("sendmessage");
+        
         sendJsonMessage({
             event: 'chat_message',
             data: {
@@ -70,7 +75,7 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
 
     const scrollToBottom = () => {
         if (messageDiv.current) {
-            messageDiv.current.scrollTop = messageDiv.current.scrollHeight
+            messageDiv.current.scrollTop = messageDiv.current.scrollHeight;
         }
     }
 
@@ -78,11 +83,12 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
         <div 
             ref={messageDiv}
             className="max-h-[400px] overflow-auto flex flex-col space-y-4">
+
             {
-                realTimeMessages.map((message, index) => {
+                messages.map((message, index) => {
                     return (
-                        <div key={index} className={`w-[80%] ${message.name == myUser?.name ? 'ml-[20%] bg-blue-300' : 'bg-gray-300'} py-4 px-6 rounded-xl`}>
-                            <p className="font-bold text-gray-500">{message.name}</p>
+                        <div key={index} className={`w-[80%] ${message.created_by.name == myUser?.name ? 'ml-[20%] bg-blue-300' : 'bg-gray-300'} py-4 px-6 rounded-xl`}>
+                            <p className="font-bold text-gray-500">{message.created_by.name}</p>
                             <p>{message.body}</p>
                         </div>
                     )
